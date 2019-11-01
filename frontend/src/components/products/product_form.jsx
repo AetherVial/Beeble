@@ -94,10 +94,7 @@ class ProductForm extends React.Component {
                     <br></br>
                     <label for="avatar">Choose a picture:</label>
 
-                    <input type="file"
-                        id="avatar" name="avatar"
-                        accept="image/png, image/jpeg"
-                        onChange={this.handleUpload}/>
+                    <input type="file" onChange={this.handleUpload}/>
                     <br></br>
                     <button onClick={this.handleSubmit}>Add new Product</button>
                 </form>
