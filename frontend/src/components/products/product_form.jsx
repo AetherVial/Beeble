@@ -54,9 +54,11 @@ class ProductForm extends React.Component {
         const xhr = new XMLHttpRequest();
         xhr.open('GET', `/sign-s3?image-name=${image.name}&image-type=${image.type}`);
         xhr.onreadystatechange = () => {
+            console.log(xhr);
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
-                    console.log(xhr.response);
+                    console.log("my name is responsetext"
+                    + xhr.responseText)
                     const response = JSON.parse(xhr.responseText);
                     this.uploadFile(image, response.signedRequest, response.url);
                 }

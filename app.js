@@ -30,6 +30,8 @@ app.use(bodyParser.json());
 
 app.use("/api/products", products);
 
+
+
 const aws = require('aws-sdk');
 const S3_BUCKET = process.env.S3_BUCKET || 'beeble-dev';
 aws.config.region = 'us-west-1';
