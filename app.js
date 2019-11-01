@@ -4,6 +4,10 @@ const mongoose = require('mongoose');
 const db = require('./config/keys').mongoURI;
 const products = require("./routes/api/products");
 
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 mongoose
     .connect(db, { useNewUrlParser: true })
     .then(() => console.log("Connected to MongoDB successfully"))
@@ -11,9 +15,7 @@ mongoose
 
 app.get("/", (req, res) => res.send("fuck mern"));
 app.use("/api/products", products);
-const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+
 
 const port = process.env.PORT || 5000;
 
