@@ -55,8 +55,8 @@ class ProductForm extends React.Component {
         xhr.onreadystatechange = () => {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
-                    const response = JSON.parse(xhr.responseText);
                     debugger
+                    const response = JSON.parse(xhr.responseText);
                     this.uploadFile(image, response.signedRequest, response.url);
                 }
                 else {
