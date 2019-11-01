@@ -11,6 +11,7 @@ class ProductForm extends React.Component {
         }
         this.handleInput = this.handleInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleUpload = this.handleUpload.bind(this);
     }
 
     handleInput(type) {
@@ -31,6 +32,10 @@ class ProductForm extends React.Component {
         })
     }
 
+    handleUpload(e) {
+
+    }
+
     render() {
         return(
             <React.Fragment>
@@ -49,6 +54,13 @@ class ProductForm extends React.Component {
                     <label> Quantity:
                         <input type="text" onChange={this.handleInput('quantity')} />
                     </label>
+                    <br></br>
+                    <label for="avatar">Choose a picture:</label>
+
+                    <input type="file"
+                        id="avatar" name="avatar"
+                        accept="image/png, image/jpeg"
+                        onChange={this.handleUpload}/>
                     <br></br>
                     <button onClick={this.handleSubmit}>Add new Product</button>
                 </form>
