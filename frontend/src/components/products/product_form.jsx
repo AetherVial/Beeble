@@ -41,6 +41,7 @@ class ProductForm extends React.Component {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
                     this.setState({ image: url })
+                    console.log(this.state);
                 }
                 else {
                     alert('Could not upload image.');
@@ -57,8 +58,6 @@ class ProductForm extends React.Component {
             console.log(xhr);
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
-                    console.log("my name is responsetext"
-                    + xhr.responseText)
                     const response = JSON.parse(xhr.responseText);
                     this.uploadFile(image, response.signedRequest, response.url);
                 }
