@@ -14,11 +14,31 @@ class ProductIndex extends React.Component {
         })
         if (products.length === 0) {
             return (
-                <div>no items</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Product Name</td>
+                            <td>Description</td>
+                            <td>Quantity</td>
+                            <td>Image</td>
+                        </tr>
+                    </thead>
+                </table>
             )
         } else {
             return (
-                <ul>{products}</ul>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Product Name</td>
+                            <td>Description</td>
+                            <td>Quantity</td>
+                            <td>Image</td>
+                        </tr>
+                    </thead>
+                    <tbody>{products}</tbody>
+                
+                </table>
             )
         }
             

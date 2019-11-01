@@ -1,17 +1,19 @@
 import React from 'react';
 
+
 class ProductIndexItem extends React.Component {
 
     render() {
+        let img = this.props.product.image ? this.props.product.image : require("../../assets/image-placeholder.png");
         return (
-            <div>
-                <ul>
-                    <li>Product Name: {this.props.product.name}</li>
-                    <li>Product Description: {this.props.product.description}</li>
-                    <li>Quantity: {this.props.product.quantity}</li>
-                </ul>
-                <br></br>
-            </div>
+                <tr>
+                    <td>{this.props.product.name}</td>
+                    <td>{this.props.product.description}</td>
+                    <td>{this.props.product.quantity}</td>
+                    <td>
+                        <img src={img} alt="hi beeble"/>
+                    </td>
+                </tr>
         )
     }
 }

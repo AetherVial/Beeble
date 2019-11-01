@@ -6,7 +6,6 @@ const ProductsReducer = (state = {all: {}, new: undefined}, action) => {
     switch(action.type) {
         case RECEIVE_PRODUCTS:
             newState.all = action.products.data;
-            console.log(newState);
             return newState;
         case RECEIVE_NEW_PRODUCT:
             newState.new = action.product.data;

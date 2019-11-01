@@ -19,3 +19,21 @@ input {
 textarea {
   border: 1px solid red;
 }
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+td {
+  width: 300px;
+}
+
+img {
+  width: 100px;
+  height: 100px;
+}
+
+button {
+  border: 1px solid black;
+}

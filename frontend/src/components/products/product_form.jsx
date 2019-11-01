@@ -7,6 +7,7 @@ class ProductForm extends React.Component {
             name: "",
             description: "",
             quantity: "",
+            image: "",
         }
         this.handleInput = this.handleInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,11 +23,12 @@ class ProductForm extends React.Component {
         e.preventDefault();
         this.props.addProduct(this.state)
             .then(() => this.props.fetchProducts());
-        this.state = {
+        this.setState({
             name: "",
             description: "",
             quantity: "",
-        };
+            image: ""
+        })
     }
 
     render() {
