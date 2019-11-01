@@ -25,7 +25,6 @@ class ProductForm extends React.Component {
         e.preventDefault();
         this.props.addProduct(this.state)
             .then(() => this.props.fetchProducts());
-        console.log(this.state)
         this.setState({
             name: "",
             description: "",
@@ -41,7 +40,6 @@ class ProductForm extends React.Component {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
                     this.setState({ image: url })
-                    console.log(this.state);
                 }
                 else {
                     alert('Could not upload image.');
@@ -53,9 +51,8 @@ class ProductForm extends React.Component {
 
     getSignedRequest(image) {
         const xhr = new XMLHttpRequest();
-        xhr.open('GET', `/sign-s3?image-name=${image.name}&image-type=${image.type}`);
+        xhr.open('GET', `/sign-s3?file-name=${image.name}&file-type=${image.type}`);
         xhr.onreadystatechange = () => {
-            console.log(xhr);
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
                     const response = JSON.parse(xhr.responseText);
