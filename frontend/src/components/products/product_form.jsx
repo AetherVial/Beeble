@@ -20,6 +20,7 @@ class ProductForm extends React.Component {
         }
     }
 
+    
     handleSubmit(e) {
         e.preventDefault();
         this.props.addProduct(this.state)
@@ -32,8 +33,44 @@ class ProductForm extends React.Component {
         })
     }
 
-    handleUpload(e) {
+    uploadFile(image, signedRequest, url) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('PUT', signedRequest);
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    this.setState({ image: url })
+                }
+                else {
+                    alert('Could not upload image.');
+                }
+            }
+        };
+        xhr.send(image);
+    }
 
+    getSignedRequest(image) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', `/sign-s3?image-name=${image.name}&image-type=${image.type}`);
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    const response = JSON.parse(xhr.responseText);
+                    this.uploadFile(image, response.signedRequest, response.url);
+                }
+                else {
+                    alert('Could not get signed URL.');
+                }
+            }
+        };
+        xhr.send();
+    }
+
+    handleUpload(e) {
+        const file = e.currentTarget.files[0];
+        if (file) {
+            this.getSignedRequest(file);
+        }
     }
 
     render() {
