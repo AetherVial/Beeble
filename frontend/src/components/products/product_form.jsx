@@ -25,6 +25,7 @@ class ProductForm extends React.Component {
         e.preventDefault();
         this.props.addProduct(this.state)
             .then(() => this.props.fetchProducts());
+        console.log(this.state)
         this.setState({
             name: "",
             description: "",
@@ -55,7 +56,6 @@ class ProductForm extends React.Component {
         xhr.onreadystatechange = () => {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
-                    debugger
                     const response = JSON.parse(xhr.responseText);
                     this.uploadFile(image, response.signedRequest, response.url);
                 }
@@ -93,7 +93,7 @@ class ProductForm extends React.Component {
                         <input type="text" onChange={this.handleInput('quantity')} />
                     </label>
                     <br></br>
-                    <label for="avatar">Choose a picture:</label>
+                    <label>Choose a picture:</label>
 
                     <input type="file" onChange={this.handleUpload}/>
                     <br></br>
